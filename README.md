@@ -29,3 +29,13 @@ Plain static HTML/CSS/JS with no framework and no runtime dependencies. Upload t
 - **Chrome:** header goes frosted on scroll and hides on scroll down, returning on scroll up. Also a pink reading-progress hairline, a full-screen mobile menu with staggered links, a mobile Call/WhatsApp/Quote bar, fill-sweep and (on desktop) magnetic buttons.
 - **Page changes:** cross-document View Transitions (Chrome/Edge/Safari 18.2+), with a fade fallback elsewhere.
 - **Reduced motion:** all of it switches off under `prefers-reduced-motion`.
+
+### Look & feel: "Barbie pink" theme
+At the client's request the site now uses a bold pink look inspired by the logo, going beyond the brief's original "pink accents only" palette:
+- Hot pink `#E0218A` for surfaces and decoration, and deep pink `#C8157A` for buttons and small text (white text on it passes WCAG AA). The logo pink `#CC4484`, bubblegum `#FF8CC6` and candy `#FFC2E1` are used as tints, on a pink-white `#FFF5FA` background.
+- Deep plum `#3A0E27` replaces charcoal for body text and the footer.
+- Accent words in headings are set in **Great Vibes**, a script that echoes the logo lettering.
+- Pill buttons with a pink glow, rounded photos and cards, hot-pink feature sections, and pink-tinted hero photography.
+- Twinkling ✦ sparkles and drifting pink glow blobs in the hero, the feature sections and the CTA band. These switch off under reduced motion.
+
+All theme styles are grouped in the "Barbie-pink theme" block of `site/assets/css/style.css`.

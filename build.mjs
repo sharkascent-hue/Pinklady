@@ -227,7 +227,7 @@ function head(p, R) {
 <title>${p.title}</title>
 <meta name="description" content="${p.desc}">
 <link rel="canonical" href="${url}">
-<meta name="theme-color" content="#FAF7F3">
+<meta name="theme-color" content="#E0218A">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Pink Lady Cleaning">
 <meta property="og:locale" content="en_IE">
@@ -409,6 +409,19 @@ function breadcrumbSchema(p) {
   };
 }
 
+
+/* Decorative twinkling sparkles + soft pink glow (pure CSS animation, hidden from screen readers) */
+function sparkles(n = 14, seed = 1, cls = '') {
+  let x = seed * 9301 + 49297;
+  const rnd = () => ((x = (x * 9301 + 49297) % 233280) / 233280);
+  let out = '';
+  for (let i = 0; i < n; i++) {
+    out += `<i style="left:${(rnd() * 96 + 2).toFixed(1)}%;top:${(rnd() * 90 + 4).toFixed(1)}%;font-size:${(8 + rnd() * 18).toFixed(0)}px;animation-delay:${(-rnd() * 5).toFixed(2)}s;animation-duration:${(3.5 + rnd() * 3).toFixed(1)}s"></i>`;
+  }
+  return `<div class="sparkles${cls ? ' ' + cls : ''}" aria-hidden="true">${out}</div>`;
+}
+const glow = () => '<div class="glow" aria-hidden="true"><span></span><span></span><span></span></div>';
+
 /* ---------------------------------------------------------------------------
    Components
 --------------------------------------------------------------------------- */
@@ -418,6 +431,7 @@ function pageHero(p, R, { eyebrow, title, lead, image, short = false, ctas = tru
   return `
 <section class="page-hero${short ? ' page-hero--short' : ''}">
   <div class="hero__media"><div class="media">${img(image, { eager: true })}</div></div>
+  ${glow()}${sparkles(12, image.length)}
   <div class="container">
     ${crumbsHtml(p, R)}
     ${eyebrow ? `<p class="eyebrow" data-reveal="fade" style="--d:100">${eyebrow}</p>` : ''}
@@ -470,6 +484,7 @@ function ctaBand(R, { title = 'Let’s talk about <em>your home.</em>', lead = '
   return `
 <section class="section cta-band">
   <div class="media" aria-hidden="true">${img(image, { parallax: '0.12', widths: [800, 1400, 2000] })}</div>
+  ${sparkles(16, 3)}
   <div class="container container--narrow">
     <p class="eyebrow eyebrow--center" data-reveal="fade">Request a Quote</p>
     <h2 class="h2" data-split>${title}</h2>
@@ -518,6 +533,7 @@ pages.push({
   body: (p, R) => `
 <section class="hero">
   <div class="hero__media" data-parallax="0.25"><div class="media">${img('hero', { eager: true })}</div></div>
+  ${glow()}${sparkles(22, 7)}
   <div class="container hero__inner">
     <p class="eyebrow" data-reveal="fade" style="--d:100">Family-run · Dublin · Since 2006</p>
     <h1 class="display hero__title" data-split style="--d:150">Exceptional care for <em>exceptional</em> homes</h1>
@@ -579,6 +595,7 @@ pages.push({
 ${standard()}
 
 <section class="section section--dark">
+  ${sparkles(12, 5)}
   <div class="container grid-2">
     <div class="media ratio-portrait" data-reveal="clip">${img('interior', { sizes: '(min-width:900px) 45vw, 100vw', widths: [600, 900, 1300], parallax: '0.05' })}</div>
     <div>
@@ -712,6 +729,7 @@ ${pageHero(p, R, { eyebrow: 'Our Story', title: 'Family-run, <em>since 2006</em>
   </div>
 </section>
 <section class="section section--dark">
+  ${sparkles(12, 5)}
   <div class="container grid-2">
     <div>
       <p class="eyebrow" data-reveal="fade">Today</p>
